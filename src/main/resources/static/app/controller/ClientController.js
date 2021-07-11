@@ -3,6 +3,7 @@ Ext.define('Bank.controller.ClientController', {
     models: ['Client'],
     stores: ['ClientStore'],
     views: ['ClientView'],
+    controllers: ['Bank.controller.ClientWindowController'],
     init: function() {
         this.control({
             'client button[action=create]': {
@@ -17,10 +18,10 @@ Ext.define('Bank.controller.ClientController', {
         });
     },
     createClick: function(btn) {
-        console.log('создать...');
+        Ext.widget('client-window').show();
     },
     editClick: function(btn) {
-        console.log('редактировать...');
+        Ext.widget('client-window').show();
     },
     deleteClick: function(btn) {
         let grid = btn.up('grid');
