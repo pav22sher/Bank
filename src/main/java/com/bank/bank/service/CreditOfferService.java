@@ -19,4 +19,8 @@ public class CreditOfferService {
         return creditOfferRepository.findAll().stream()
                 .map(CreditOfferDTO::new).collect(Collectors.toList());
     }
+
+    public void delete(Long id) {
+        creditOfferRepository.deleteById(id);
+    }
 }

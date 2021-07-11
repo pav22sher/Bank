@@ -23,6 +23,31 @@ Ext.define('Bank.controller.CreditOfferController', {
         console.log('редактировать...')
     },
     deleteClick: function() {
-        console.log('удалить...')
+        let grid = btn.up('grid');
+        let record = grid.getSelectionModel().getSelection()[0];
+        if(record){
+            Ext.Ajax.request({
+                url: '/credit-offer/'+record.get('id'),
+                method: 'delete',
+                success: function(){
+                    grid.getStore().reload();
+                },
+                failure: function(){
+                    Ext.MessageBox.show({
+                        title: 'Ошибка',
+                        msg: 'Ошибка при удалении',
+                        icon: Ext.MessageBox.ERROR,
+                        buttons: Ext.Msg.OK
+                    });
+                }
+            });
+        } else {
+            Ext.MessageBox.show({
+                title: 'Ошибка',
+                msg: 'Не выбрана запись для удаления',
+                icon: Ext.MessageBox.ERROR,
+                buttons: Ext.Msg.OK
+            });
+        }
     }
 });

@@ -19,4 +19,8 @@ public class CreditService {
         return creditRepository.findAll().stream()
                 .map(CreditDTO::new).collect(Collectors.toList());
     }
+
+    public void delete(Long id) {
+        creditRepository.deleteById(id);
+    }
 }
