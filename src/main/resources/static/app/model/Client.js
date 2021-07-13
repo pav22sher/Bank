@@ -6,6 +6,7 @@ Ext.define('Bank.model.Client', {
         'firstName',
         'secondName',
         'phone',
-        'email'
+        'email',
+        'passportNumber'
     ]
 });

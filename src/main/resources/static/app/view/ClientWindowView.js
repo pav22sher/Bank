@@ -25,7 +25,7 @@ Ext.define('Bank.view.ClientWindowView', {
                 },
                 {
                     xtype: 'textfield',
-                    name: 'lastName',
+                    name: 'secondName',
                     fieldLabel: 'Отчество',
                     allowBlank: false
                 },
@@ -40,6 +40,12 @@ Ext.define('Bank.view.ClientWindowView', {
                     name: 'email',
                     fieldLabel: 'Почта',
                     vtype: 'email',
+                    allowBlank: false
+                },
+                {
+                    xtype: 'textfield',
+                    name: 'passportNumber',
+                    fieldLabel: 'Номер паспорта',
                     allowBlank: false
                 }
             ]

@@ -37,7 +37,7 @@ Ext.define('Bank.view.ClientView', {
         },
         {
             header: 'Отчество',
-            dataIndex: 'lastName',
+            dataIndex: 'secondName',
             flex: 1
         },
         {
@@ -48,6 +48,11 @@ Ext.define('Bank.view.ClientView', {
         {
             header: 'Почта',
             dataIndex: 'email',
+            flex: 1
+        },
+        {
+            header: 'Номер паспорта',
+            dataIndex: 'passportNumber',
             flex: 1
         }
     ]

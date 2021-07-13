@@ -16,6 +16,7 @@ public class ClientDTO {
     private String secondName;
     private String phone;
     private String email;
+    private String passportNumber;
 
     public ClientDTO(Client client) {
         this.id = client.getId();
@@ -24,5 +25,6 @@ public class ClientDTO {
         this.secondName = client.getSecondName();
         this.phone = client.getPhone();
         this.email = client.getEmail();
+        this.passportNumber = client.getPassportNumber();
     }
 }

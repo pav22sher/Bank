@@ -18,10 +18,25 @@ Ext.define('Bank.controller.ClientController', {
         });
     },
     createClick: function(btn) {
-        Ext.widget('client-window').show();
+        let window = Ext.widget('client-window');
+        window.show();
     },
     editClick: function(btn) {
-        Ext.widget('client-window').show();
+        let grid = btn.up('grid');
+        let record = grid.getSelectionModel().getSelection()[0];
+        if(record){
+            let window = Ext.widget('client-window');
+            let form = window.down('form');
+            form.getForm().loadRecord(record);
+            window.show();
+        } else {
+            Ext.MessageBox.show({
+                title: 'Ошибка',
+                msg: 'Не выбрана запись для редактирования',
+                icon: Ext.MessageBox.ERROR,
+                buttons: Ext.Msg.OK
+            });
+        }
     },
     deleteClick: function(btn) {
         let grid = btn.up('grid');
@@ -31,6 +46,12 @@ Ext.define('Bank.controller.ClientController', {
                 url: '/client/'+record.get('id'),
                 method: 'delete',
                 success: function(){
+                    Ext.MessageBox.show({
+                        title: 'Успех',
+                        msg: 'Данные успешно удалены',
+                        icon: Ext.MessageBox.INFO,
+                        buttons: Ext.Msg.OK
+                    });
                     grid.getStore().reload();
                 },
                 failure: function(){
