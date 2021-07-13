@@ -2,10 +2,7 @@ package com.bank.bank.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Клиент банка
@@ -15,7 +12,9 @@ import javax.persistence.Table;
 @Data
 public class Client {
     @Id
-    @Column(name = "client_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_seq")
+    @SequenceGenerator(name = "client_seq", sequenceName = "client_client_id_seq", allocationSize = 1)
+    @Column(name = "client_id", updatable = false, insertable = false, nullable = false)
     private Long id;
 
     @Column(name = "client_last_name", length = 100)

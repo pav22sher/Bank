@@ -13,7 +13,9 @@ import java.math.BigDecimal;
 @Data
 public class CreditOffer {
     @Id
-    @Column(name = "credit_offer_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "credit_offer_seq")
+    @SequenceGenerator(name = "credit_offer_seq", sequenceName = "credit_offer_credit_offer_id_seq", allocationSize = 1)
+    @Column(name = "credit_offer_id", updatable = false, insertable = false, nullable = false)
     private Long id;
 
     @ManyToOne

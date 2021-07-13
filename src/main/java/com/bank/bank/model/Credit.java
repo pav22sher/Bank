@@ -2,10 +2,7 @@ package com.bank.bank.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
@@ -16,7 +13,9 @@ import java.math.BigDecimal;
 @Data
 public class Credit {
     @Id
-    @Column(name = "credit_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "credit_seq")
+    @SequenceGenerator(name = "credit_seq", sequenceName = "credit_credit_id_seq", allocationSize = 1)
+    @Column(name = "credit_id", updatable = false, insertable = false, nullable = false)
     private Long id;
 
     @Column(name = "credit_limit", columnDefinition = "numeric(15,2)")
