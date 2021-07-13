@@ -7,12 +7,13 @@ Ext.application({
         'CreditController',
         'CreditOfferController'
     ],
-    launch: function() {
+    launch: function () {
         Ext.create('Ext.container.Viewport', {
             layout: 'fit',
             items: {
-                xtype: 'tabpanel',
-                title : 'БанкА ХАХА',
+                xtype: 'panel',
+                title: 'Банк',
+                layout: 'accordion',
                 items: [
                     {
                         xtype: 'client'
