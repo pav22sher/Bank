@@ -1,6 +1,7 @@
 package com.bank.bank.controller;
 
 import com.bank.bank.dto.ClientDTO;
+import com.bank.bank.form.ClientForm;
 import com.bank.bank.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,11 @@ public class ClientController {
     @GetMapping
     public List<ClientDTO> get() {
         return clientService.get();
+    }
+
+    @PostMapping
+    public Long save(@RequestBody ClientForm form){
+        return clientService.save(form);
     }
 
     @DeleteMapping("/{id}")
