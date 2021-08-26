@@ -1,6 +1,8 @@
 package com.bank.bank.controller;
 
 import com.bank.bank.dto.CreditOfferDTO;
+import com.bank.bank.form.CreditForm;
+import com.bank.bank.form.CreditOfferForm;
 import com.bank.bank.service.CreditOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,11 @@ public class CreditOfferController {
     @GetMapping
     public List<CreditOfferDTO> get() {
         return creditOfferService.get();
+    }
+
+    @PostMapping
+    public Long save(@RequestBody CreditOfferForm form){
+        return creditOfferService.save(form);
     }
 
     @DeleteMapping("/{id}")

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ClientDTO {
     private Long id;
+    private String fullName;
     private String lastName;
     private String firstName;
     private String secondName;
@@ -20,6 +21,7 @@ public class ClientDTO {
 
     public ClientDTO(Client client) {
         this.id = client.getId();
+        this.fullName = client.getLastName() + " " + client.getFirstName() + " " + client.getSecondName();
         this.lastName = client.getLastName();
         this.firstName = client.getFirstName();
         this.secondName = client.getSecondName();

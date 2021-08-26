@@ -3,6 +3,7 @@ Ext.define('Bank.controller.CreditOfferController', {
     models: ['CreditOffer'],
     stores: ['CreditOfferStore'],
     views: ['CreditOfferView'],
+    controllers: ['Bank.controller.CreditOfferWindowController'],
     init: function() {
         this.control({
             'credit-offer button[action=create]': {
@@ -16,13 +17,28 @@ Ext.define('Bank.controller.CreditOfferController', {
             }
         });
     },
-    createClick: function() {
-        console.log('создать...')
+    createClick: function(btn) {
+        let window = Ext.widget('credit-offer-window');
+        window.show();
     },
-    editClick: function() {
-        console.log('редактировать...')
+    editClick: function(btn) {
+        let grid = btn.up('grid');
+        let record = grid.getSelectionModel().getSelection()[0];
+        if(record){
+            let window = Ext.widget('credit-offer-window');
+            let form = window.down('form');
+            form.getForm().loadRecord(record);
+            window.show();
+        } else {
+            Ext.MessageBox.show({
+                title: 'Ошибка',
+                msg: 'Не выбрана запись для редактирования',
+                icon: Ext.MessageBox.ERROR,
+                buttons: Ext.Msg.OK
+            });
+        }
     },
-    deleteClick: function() {
+    deleteClick: function(btn) {
         let grid = btn.up('grid');
         let record = grid.getSelectionModel().getSelection()[0];
         if(record){
